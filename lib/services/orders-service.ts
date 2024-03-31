@@ -80,13 +80,13 @@ export default class OrderService {
 
     async getLiveOrdersForCustomer(customerId: string){
         //Returns a list of live orders for the resource
-        const liveOrders = await this.httpClient.getData(`/customers/${customerId}/orders/live`, {}, {})
+        const liveOrders = await this.httpClient.getData(`/accounts/${customerId}/orders/live`, {}, {})
         return extractResponseData(liveOrders)
     }
 
     async getCustomerOrders(customerId: string, queryParams = {}){
         //Returns a paginated list of the customer's orders (as identified by the provided authentication token) based on sort param. If no sort is passed in, it defaults to descending order.
-        const customerOrders = await this.httpClient.getData(`/customers/${customerId}/orders`, {}, queryParams)
+        const customerOrders = await this.httpClient.getData(`/accounts/${customerId}/orders`, {}, queryParams)
         return extractResponseData(customerOrders)
     }
 }
